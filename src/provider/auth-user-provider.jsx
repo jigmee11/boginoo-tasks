@@ -20,7 +20,6 @@ const AuthUserProvider = (props) => {
                   }
             }
             subscribe();
-            return () => subscribe();
       },[auth]);
       // console.log(state)
       // useEffect(() => {
