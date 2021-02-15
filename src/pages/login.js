@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Layout, Button, Input, IconDash, IconEndBracket, IconStartBracket } from '../components/';
-import LoginLayout from '../components/loginLayout';
 import { useHistory } from "react-router-dom";
 import { Items } from '../provider/provider';
 import {auth} from '../components/firebase'
@@ -32,7 +31,7 @@ export const Login = () => {
           <>
             {state.user==null ? <div className="full-display flex justify-center items-center justify-center"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
             : state.userReady ? history.push("/")
-               : <LoginLayout>
+               : <Layout>
                         <div className='h100 flex justify-center'>
                               <div className='form w-8 flex-col justify-start items-center'>
                                           <div className='flex justify-center items-center mt-6'>
@@ -55,7 +54,7 @@ export const Login = () => {
                                           <div className="underline mt-4 c-primary" onClick={()=>history.push("/register")}>Шинэ хэрэглэгч бол энд дарна уу</div>
                               </div>
                         </div>
-                  </LoginLayout>}
+                  </Layout>}
           </>
     )
 }

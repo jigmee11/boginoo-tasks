@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 import { Layout, Button, Input, IconDash, IconEndBracket, IconStartBracket } from '../components/';
-import LoginLayout from '../components/loginLayout';
 import { useHistory } from "react-router-dom";
 import FormInput from '../components/formInput';
 import { Items } from '../provider/provider'
@@ -9,7 +8,7 @@ const ForgotPassword = () => {
       const history = useHistory();
       const {setLoginInput,EmailAuth} = useContext(Items);
       return (
-            <LoginLayout>
+            <Layout>
                   <div className='h100 flex justify-center'>
                         <div className='form w-8 flex-col justify-start items-center'>
                                     <div className='flex justify-center items-center mt-6'>
@@ -25,7 +24,7 @@ const ForgotPassword = () => {
                                     <div className="underline mt-4 c-primary" onClick={()=>history.push("/login")}>Бүртгүүлсэн бол энд дарна уу</div>
                         </div>
                   </div>
-            </LoginLayout>
+            </Layout>
         )
 }
 export default ForgotPassword;
