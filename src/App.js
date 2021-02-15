@@ -7,16 +7,34 @@ import {
     Link
 } from "react-router-dom";
 import './style/main.scss';
+import Login from './pages/login';
+import Register from './pages/register';
+import ForgotPassword from './pages/forgotPassword';
+import Provider from './provider/provider';
+import AuthUserProvider from './provider/auth-user-provider';
 
 const App = () => {
     return (
-        <Router>
-            <Switch>
-                <Route path="/" exact>
-                    <HomeDefault />
-                </Route>
-            </Switch>
-        </Router>
+        <AuthUserProvider>
+            <Router>
+                <Provider>
+                    <Switch>
+                            <Route path="/" exact>
+                                <HomeDefault />
+                            </Route>
+                            <Route path="/login" exact>
+                                <Login/>
+                            </Route>
+                            <Route path="/register" exact>
+                                <Register/>
+                            </Route>
+                            <Route path="/forgot-password" exact>
+                                <ForgotPassword/>
+                            </Route>
+                    </Switch>
+                </Provider>
+            </Router>
+        </AuthUserProvider>
     )
 }
 

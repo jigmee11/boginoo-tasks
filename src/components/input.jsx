@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Items } from '../provider/provider';
 
 export const Input = (props) => {
     let { className, ...others } = props;
-
+    const {setLoginInput} = useContext(Items);
+    const inputHandler = (value,id,type,checked) => {
+        if(type=="checkbox"){
+            setLoginInput(old=>{
+                console.log(checked);
+                return{...old,  "remember": checked};
+            })
+        }
+        else{
+            setLoginInput(old=>{
+                return{...old,  [id]: value};
+            })
+        }
+    }
     /* 
         https://boginoo.firebaseapp.com/input
 
@@ -22,7 +36,7 @@ export const Input = (props) => {
 
     return (
         <div>
-            <input className={`input ${className}`} {...others} />
+            <input className={`input ${className}`} {...others} onChange={(e)=>inputHandler(e.target.value,e.target.id,e.target.type,e.target.checked)}/>
         </div>
     );
 };

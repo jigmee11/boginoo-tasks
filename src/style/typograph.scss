@@ -134,7 +134,14 @@
 .bold {
     font-weight: bold;
 }
-
+@for $i from 10 through 80 {
+    .fs-#{$i} {
+        font-size: $i+px;
+    }
+    .lh-#{$i} {
+        line-height: $i+px;
+    }
+}
 
 /* 
     sass ашиглан 12 -оос 80 -ийн хооронд давтан

@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useContext, useState } from 'react'
+import { useHistory } from "react-router-dom";
+import { Items } from '../provider/provider';
+import {auth} from '../components/firebase'
 
 export const Button = (props) => {
-    let { children, disabled, className, ...others } = props;
+    const history = useHistory();
+    let { children, disabled, className, page, ...others } = props;
     /* 
         https://boginoo.firebaseapp.com/button
 
@@ -24,6 +28,7 @@ export const Button = (props) => {
       
     */
     return (
-        <button>{children}</button>
+        <button onClick={()=>history.push(page)} className={`btn ${className} ${disabled&&"disabled"}`} {...others}>{children}</button>
     );
 };
+           
