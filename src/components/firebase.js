@@ -3,12 +3,12 @@ import firebase from 'firebase'
 import 'firebase/firestore'
 
 var firebaseConfig = {
-  apiKey: "AIzaSyBH4Fdvtep5Jw1Syw8uZLyOvDAXv7JGDtA",
-  authDomain: "boginoo-2d962.firebaseapp.com",
-  projectId: "boginoo-2d962",
-  storageBucket: "boginoo-2d962.appspot.com",
-  messagingSenderId: "281510281989",
-  appId: "1:281510281989:web:9593f3aa0d26e2a60ded6c"
+  apiKey: "AIzaSyCJMThfQoW8SFkx9xW3FKCvygmOvGrgiR8",
+  authDomain: "short-1.firebaseapp.com",
+  projectId: "short-1",
+  storageBucket: "short-1.appspot.com",
+  messagingSenderId: "649886963056",
+  appId: "1:649886963056:web:93b095eeb028afc279abb5"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);

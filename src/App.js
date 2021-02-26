@@ -12,6 +12,7 @@ import Register from './pages/register';
 import ForgotPassword from './pages/forgotPassword';
 import Provider from './provider/provider';
 import AuthUserProvider from './provider/auth-user-provider';
+import Move from './pages/move';
 
 const App = () => {
     return (
@@ -30,6 +31,9 @@ const App = () => {
                             </Route>
                             <Route path="/forgot-password" exact>
                                 <ForgotPassword/>
+                            </Route>
+                            <Route path="*" exact>
+                                <Move/>
                             </Route>
                     </Switch>
                 </Provider>

@@ -7,6 +7,7 @@ import FormInput from '../components/formInput';
 import { AuthUser } from '../provider/auth-user-provider';
 import {Redirect} from "react-router-dom";
 import '../style/loadingAnimation.scss'
+import LoadingAnimation from '../components/loadingAnimation';
 export const Login = () => {
       const history = useHistory();
       const {state,setState} = useContext(AuthUser);
@@ -29,7 +30,7 @@ export const Login = () => {
       }
     return (
           <>
-            {state.user==null ? <div className="full-display flex justify-center items-center justify-center"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+            {state.user==null ? <LoadingAnimation/>
             : state.userReady ? history.push("/")
                : <Layout>
                         <div className='h100 flex justify-center'>

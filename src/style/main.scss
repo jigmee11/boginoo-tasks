@@ -2,6 +2,7 @@
 @import './components.scss';
 @import './flex.scss';
 @import './typograph.scss';
+@import './dropdown.scss';
 
 @function pow($base, $exp) {
     $res: 1;
@@ -50,6 +51,9 @@
     .ml-#{$i} {
         margin-left: pow(2, $i) + px;
     }
+    .mr-#{$i}{
+        margin-right: pow(2, $i) + px;
+    }
 }
 
 body {
@@ -69,7 +73,25 @@ body {
 .text-center{
     text-align: center;
 }
-
+.bottom-shadow{
+    border-bottom: solid 1px grey;
+}
+.history{
+    width: 990px;
+}
+.primary-color{
+    color: #02B589;
+}
+.underline-primary{
+    border-bottom:  solid #02B589 1px;
+}
+.clear-button{
+    background-color: white;
+    border: none;
+}
+.small-url{
+    width: 320px;
+}
 
 // ЭНЭ CSS ЯМАР УЧИРТАЙГ САЙН СУДЛАХ
 * {

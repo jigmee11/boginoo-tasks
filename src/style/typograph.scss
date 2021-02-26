@@ -142,10 +142,15 @@
         line-height: $i+px;
     }
 }
-
+.grey{
+    color: grey;
+}
 /* 
     sass ашиглан 12 -оос 80 -ийн хооронд давтан
     font-size, line-height -ийг зааж өгөх боломжтой class-ууд үүсгэ
     Жишээ нь:
         className='fs-16 lh-20'
 */
+.word-wrap{
+    word-wrap: break-word !important;
+}

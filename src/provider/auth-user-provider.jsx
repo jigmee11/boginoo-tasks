@@ -1,5 +1,7 @@
-import React, { createContext, useContext, useState, useEffect } from 'react'
-import {auth} from '../components/firebase'
+import React, { createContext, useContext, useEffect, useState,  } from 'react'
+import {firebase,auth,db} from '../components/firebase'
+import { useLocation,useHistory,Redirect } from "react-router-dom";
+import { configure } from '@testing-library/react';
 
 export const AuthUser = createContext();
 
@@ -12,7 +14,7 @@ const AuthUserProvider = (props) => {
             }
             let user = localStorage.getItem("user");
             const subscribe = ()=>{
-                  if(user=="null"){
+                  if(user===null||user=="null"){
                         setState({user: "", userReady: false});
                   }
                   else{

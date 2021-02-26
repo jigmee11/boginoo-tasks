@@ -6,6 +6,7 @@ import {auth} from '../components/firebase'
 import FormInput from '../components/formInput';
 import { AuthUser } from '../provider/auth-user-provider';
 import '../style/loadingAnimation.scss'
+import LoadingAnimation from '../components/loadingAnimation';
 
 const Register = () => {
       const history = useHistory();
@@ -30,7 +31,7 @@ const Register = () => {
       }
       return (
             <>
-            {state.user==null ? <div className="full-display flex justify-center items-center justify-center"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+            {state.user==null ? <LoadingAnimation/>
             : state.userReady ? history.push("/")
                : 
                <Layout>
