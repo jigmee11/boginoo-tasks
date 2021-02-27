@@ -28,7 +28,7 @@ export const Button = (props) => {
       
     */
     return (
-        <button onClick={()=>history.push(page)} className={`btn ${className} ${disabled&&"disabled"}`} {...others}>{children}</button>
+        <button className={`btn ${className} ${disabled&&"disabled"}`} {...others}>{children}</button>
     );
 };
            

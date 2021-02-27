@@ -8,13 +8,12 @@ export const AuthUser = createContext();
 const AuthUserProvider = (props) => {
       const [state,setState] = useState({user: null, userReady: false});
       useEffect(()=> {
-            console.log(localStorage.getItem("user"));
             if(!auth){
                   return;
             }
             let user = localStorage.getItem("user");
             const subscribe = ()=>{
-                  if(user===null||user=="null"){
+                  if(user===null||user==="null"){
                         setState({user: "", userReady: false});
                   }
                   else{
