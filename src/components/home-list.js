@@ -3,6 +3,7 @@ import {useCollection} from '../provider/useCollection'
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { AuthUser } from '../provider/auth-user-provider';
 import QRCode from 'qrcode'
+import { Button } from './button';
 
 const HomeList = ({item,i,state}) => {
       const { deleteDoc } = useCollection(state.user);
@@ -39,7 +40,7 @@ const HomeList = ({item,i,state}) => {
                     </div>
                     <div className="ml-6">
                         <canvas ref={canvas} onClick={()=>hideCanvas()}  style={{display: showCanvas==false ? "none": "block"}} ></canvas>
-                        <div style={{display: showCanvas==false ? "block" : "none"}} onClick={()=>showQr(item.outputUrl)}>Show QR code</div>
+                        <Button style={{display: showCanvas==false ? "block" : "none"}} className="btn font-ubuntu bold c-default h-5 ph-4 ml-4 b-primary" onClick={()=>showQr(item.outputUrl)}>Show QR code</Button>
                     </div>
                 </div>
             </div>

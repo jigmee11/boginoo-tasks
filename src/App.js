@@ -20,21 +20,21 @@ const App = () => {
             <Router>
                 <Provider>
                     <Switch>
-                            <Route path="/" exact>
-                                <HomeDefault />
-                            </Route>
-                            <Route path="/login" exact>
-                                <Login/>
-                            </Route>
-                            <Route path="/register" exact>
-                                <Register/>
-                            </Route>
-                            <Route path="/forgot-password" exact>
-                                <ForgotPassword/>
-                            </Route>
-                            <Route path="*" exact>
-                                <Move/>
-                            </Route>
+                        <Route path="/" exact>
+                            <HomeDefault />
+                        </Route>
+                        <Route path="/login" exact>
+                            <Login/>
+                        </Route>
+                        <Route path="/register" exact>
+                            <Register/>
+                        </Route>
+                        <Route path="/forgot-password" exact>
+                            <ForgotPassword/>
+                        </Route>
+                        <Route path="*" exact>
+                            <Move/>
+                        </Route>
                     </Switch>
                 </Provider>
             </Router>
