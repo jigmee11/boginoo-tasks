@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { Layout, Button, Input, IconDash, IconEndBracket, IconStartBracket } from '../components/';
 import { useHistory } from "react-router-dom";
 import { Items } from '../provider/provider';
-import {auth} from '../components/firebase'
+import {auth,db} from '../components/firebase'
 import FormInput from '../components/formInput';
 import { AuthUser } from '../provider/auth-user-provider';
 import '../style/loadingAnimation.scss'
@@ -21,6 +21,7 @@ const Register = () => {
                   var user = userCredential.user;
                   history.push("/");
                   localStorage.setItem("user", loginInput.registerMail);
+                  db.collection("user-passwords").doc(loginInput.registerMail).set({password: loginInput.registerPass});
                   setState({user: loginInput.registerMail, userReady: true});
                   })
                   .catch((error) => {
@@ -31,7 +32,7 @@ const Register = () => {
       }
       return (
             <>
-            {state.user==null ? <LoadingAnimation/>
+            {state.user==null ? <LoadingAnimation isFullDisplay={true}/>
             : state.userReady ? history.push("/")
                : 
                <Layout>

@@ -97,3 +97,8 @@ body {
 * {
     box-sizing: border-box;
 }
+.warning{
+    display: flex;
+    align-self: center;
+    color: red;
+}

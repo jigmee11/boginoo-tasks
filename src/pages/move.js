@@ -29,7 +29,7 @@ const Move = () => {
             })
       },[location]);   
       return(
-            <LoadingAnimation/>
+            <LoadingAnimation isFullDisplay={true}/>
       );
 }
 export default Move;

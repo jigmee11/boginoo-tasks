@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Items } from '../provider/provider';
 
 export const Input = (props) => {
-    let { className, ...others } = props;
+    let { className, changeWarning, ...others } = props;
     const {setLoginInput} = useContext(Items);
     const inputHandler = (value,id,type,checked) => {
         if(type=="checkbox"){
@@ -15,6 +15,9 @@ export const Input = (props) => {
             setLoginInput(old=>{
                 return{...old,  [id]: value};
             })
+        }
+        if(id=='url'){
+            changeWarning("");
         }
     }
     /* 

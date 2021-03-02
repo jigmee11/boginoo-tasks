@@ -30,7 +30,7 @@ export const Login = () => {
       }
     return (
           <>
-            {state.user==null ? <LoadingAnimation/>
+            {state.user==null ? <LoadingAnimation isFullDisplay={true}/>
             : state.userReady ? history.push("/")
                : <Layout>
                         <div className='h100 flex justify-center'>
