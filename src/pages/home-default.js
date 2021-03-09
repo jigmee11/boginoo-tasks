@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState, useRef } from 'react';
 import randomstring from 'randomstring'
 import { Layout, Button, Input, IconDash, IconEndBracket, IconStartBracket } from '../components/';
-import { db } from '../components/firebase'
+import { db, firebase } from '../components/firebase'
 import { Items } from '../provider/provider';
 import { AuthUser } from '../provider/auth-user-provider';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
@@ -13,7 +13,7 @@ import HomeList from '../components/home-list';
 export const HomeDefault = () => {
     const { state } = useContext(AuthUser);
     const { loginInput,setLoginInput } = useContext(Items);
-    const { data, dataDownloaded, createDoc, updateDoc, deleteDoc } = useCollection(state.user);
+    const { data, dataDownloaded, createDoc, updateDoc, deleteDoc, uploading } = useCollection(state.user);
     const [warning, setWarning] = useState("");
     const boginoo = async () => {
         if (state.user == null || state.user == "null"|| state.user=="") {
@@ -31,6 +31,19 @@ export const HomeDefault = () => {
             outputUrl: `https://short-1.web.app/${shortenedURL}`,
             id: shortenedURL
         }
+        // const uploadHisotry = firebase.functions().httpsCallable('userHistory');
+        // const addShortUrls = firebase.functions().httpsCallable('addShortUrls');
+        // addShortUrls(data).then(result=>{
+        //     console.log(result);
+        // })
+        // console.log("lols");
+        // uploadHisotry(data).then(result=>{
+        //     console.log(result);
+        // })
+        // const jigmeeUserAndShort = firebase.functions().httpsCallable('jigmeeUserAndShort');
+        // jigmeeUserAndShort(data);
+        const jigmeeUserAndShort = firebase.functions().httpsCallable('jigmeeUserAndShort');
+        jigmeeUserAndShort(data);
         createDoc(state.user,data,shortenedURL);
         setLoginInput((old)=>({...old,  url: ""}));
     }
@@ -54,16 +67,19 @@ export const HomeDefault = () => {
                 </div>
                 <p className="warning">{warning}</p>
                 {dataDownloaded==false ? <LoadingAnimation isFullDisplay={false}/> 
-                  : data.length>0 ?  <div className="flex flex-col justify-center items-center mt-5">
-                  <div className="history bold primary-color fs-20">Түүх</div>
-                  <div className="flex-col justify-center">
-                      {data.map((item,i) => {
-                          return(
-                              <HomeList item={item} i={i} state={state}/>
-                          )
-                      })}
-                  </div>
-              </div> : <></>
+                  : data.length>0 ?   
+                    <div className="flex flex-col justify-center items-center mt-5">
+                            {uploading==true ? 'Uploading' && <LoadingAnimation isFullDisplay={false}/>:<></>}
+                            <div className="history bold primary-color fs-20">Түүх</div>
+                            <div className="flex-col justify-center">
+                                {data.map((item,i) => {
+                                    return(
+                                        <HomeList item={item} i={i} state={state}/>
+                                    )
+                                })}
+                            </div>
+                    </div> 
+                    : <></>
               }
             </div>
         </Layout>
